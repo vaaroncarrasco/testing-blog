@@ -26,12 +26,18 @@
 
 Cypress.Commands.add("getAllPosts", () => {
   cy.request("GET", "http://localhost:3000/api/posts").then((response) => {
+
+    // Wrap the returned object to pass it thru.
+    // If its a promise, yield its resolved value
     return cy.wrap(response.body);
   });
 });
 
 Cypress.Commands.add("getFirstPost", () => {
   cy.request("GET", "http://localhost:3000/api/posts").then((response) => {
+
+    // Wrap the returned object to pass it thru.
+    // If its a promise, yield its resolved value
     return cy.wrap(response.body).its(0);
   });
 });
